@@ -35,7 +35,7 @@ encryptInternal (sc:ss) cipherRemain@(cc:cs) cipher
   
 decryptInternal :: String -> String -> String -> String
 decryptInternal [] _ _ = []
-decryptInternal encStr [] cipher = encryptInternal encStr cipher cipher
+decryptInternal encStr [] cipher = decryptInternal encStr cipher cipher
 decryptInternal (ec:es) cipherRemain@(cc:cs) cipher
         |isLetter ec = (decryptChar ((toUpper ec),(toUpper cc))):(decryptInternal es cs cipher)
         |otherwise = ' ':(decryptInternal es cipherRemain cipher)
